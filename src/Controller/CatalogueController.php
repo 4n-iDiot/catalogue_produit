@@ -2,7 +2,8 @@
 
 namespace App\Controller;
 
-use Sensio\Bundle\FrameworkExtraBundle\Configuration\Route;
+use App\Entity\Produit;
+use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 
@@ -14,22 +15,22 @@ class CatalogueController extends AbstractController
      */
     public function productList()
     {
-        $productNames = ['I', 'am', 'a', 'product'];
-        $productDescriptions = ["Le produit 1", "Le produit 2", "Le produit 3", "Le produit 4"];
+        $products = $this->getDoctrine()->getRepository(Produit::class)->findAll();
 
         return $this->render('product/listProduct.html.twig', [
-            'productNames' => $productNames,
-            'productDescriptions' => $productDescriptions,
+            'products' => $products,
         ]);
     }
 
     /**
-     * @Route("/produit/{slug}")
+     * @Route("/produit/{id}")
      */
-    public function showProduct($slug)
+    public function showProduct($id)
     {
+        $product = $this->getDoctrine()->getRepository(Produit::class)->find($id);
+
         return $this->render('product/showProduct.html.twig', [
-            'title' => ucwords(str_replace('-', ' ', $slug)),
+            'product' => $product,
         ]);
     }
 }

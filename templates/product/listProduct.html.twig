@@ -2,10 +2,13 @@
 
 {% block title %}Catalogue produit{% endblock %}
 {% block body %}
-        <h1>List of products</h1>
-        <ul>
-                {% for productName in productNames %}
-                        <li>Product name : {{ productName }}</li>
-                {% endfor %}
-        </ul>
+    <h1>Liste des produits</h1>
+    <ul>
+        {% for product in products %}
+            <li><a href="http://127.0.0.1:8000/produit/{{ product.getId() }}"><h1>Produit {{ product.getId() }} : {{ product.getNom() }}</h1></a>
+                <p>{{ product.getRéférence }}s</p>
+                <hr>
+            </li>
+        {% endfor %}
+    </ul>
 {% endblock %}

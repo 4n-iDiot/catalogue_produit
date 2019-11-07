@@ -1,0 +1,12 @@
+App\Entity\Marque:
+  marque_{1..5}:
+    nom: <name()>
+
+App\Entity\Produit:
+  produit_{1..20}:
+    prix: <randomFloat()>
+    nom: <name()>
+    référence: <text()>
+    date_mise_en_vente: <date_create()>
+    marque: '@marque_1'
+    id: <($current)>
