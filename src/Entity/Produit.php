@@ -29,7 +29,7 @@ class Produit
     /**
      * @ORM\Column(type="string", length=255)
      */
-    private $référence;
+    private $ref;
 
     /**
      * @ORM\Column(type="date")
@@ -78,14 +78,14 @@ class Produit
         return $this;
     }
 
-    public function getRéférence(): ?string
+    public function getRef(): ?string
     {
-        return $this->référence;
+        return $this->ref;
     }
 
-    public function setRéférence(string $référence): self
+    public function setRef(string $ref): self
     {
-        $this->référence = $référence;
+        $this->ref = $ref;
 
         return $this;
     }

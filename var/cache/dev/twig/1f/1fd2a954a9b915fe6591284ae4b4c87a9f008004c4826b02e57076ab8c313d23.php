@@ -104,8 +104,22 @@ class __TwigTemplate_053826835158c107e2d7e3fdf3802b9961fb4fa93c55e5bffd4b702c12f
                 Référence : ";
         // line 10
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 10, $this->source); })()), "getRéférence", [], "method", false, false, false, 10), "html", null, true);
-        echo "</li>
+        echo "<br>
+                Date de mise en vente : ";
+        // line 11
+        echo twig_escape_filter($this->env, twig_date_format_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 11, $this->source); })()), "getDateMiseEnVente", [], "method", false, false, false, 11), "d/m/Y"), "html", null, true);
+        echo "
+            </li>
         </ul>
+        <a class=\"click-me\" href=\"http://127.0.0.1:8000/produit/edit/";
+        // line 14
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 14, $this->source); })()), "getId", [], "method", false, false, false, 14), "html", null, true);
+        echo "\">Modifier</a>
+        <style>
+        .clickMe {
+            appearance: button;
+        }​
+        </style>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -127,7 +141,7 @@ class __TwigTemplate_053826835158c107e2d7e3fdf3802b9961fb4fa93c55e5bffd4b702c12f
 
     public function getDebugInfo()
     {
-        return array (  106 => 10,  102 => 9,  98 => 8,  94 => 7,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
+        return array (  116 => 14,  110 => 11,  106 => 10,  102 => 9,  98 => 8,  94 => 7,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -141,8 +155,16 @@ class __TwigTemplate_053826835158c107e2d7e3fdf3802b9961fb4fa93c55e5bffd4b702c12f
             <li>Prix : {{ product.getPrix() }}€<br>
                 Marque : {{ product.getMarque().getNom() }}<br>
                 Nom : {{ product.getNom() }}<br>
-                Référence : {{ product.getRéférence() }}</li>
+                Référence : {{ product.getRéférence() }}<br>
+                Date de mise en vente : {{ product.getDateMiseEnVente()|date(\"d/m/Y\") }}
+            </li>
         </ul>
+        <a class=\"click-me\" href=\"http://127.0.0.1:8000/produit/edit/{{ product.getId() }}\">Modifier</a>
+        <style>
+        .clickMe {
+            appearance: button;
+        }​
+        </style>
 {% endblock %}", "product/showProduct.html.twig", "/home/vderveaux/Documents/CatalogueProduit/catalogue_produit/templates/product/showProduct.html.twig");
     }
 }

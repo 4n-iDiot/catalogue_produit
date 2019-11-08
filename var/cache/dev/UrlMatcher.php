@@ -13,7 +13,8 @@ return [
         '/_profiler/search_bar' => [[['_route' => '_profiler_search_bar', '_controller' => 'web_profiler.controller.profiler::searchBarAction'], null, null, null, false, false, null]],
         '/_profiler/phpinfo' => [[['_route' => '_profiler_phpinfo', '_controller' => 'web_profiler.controller.profiler::phpinfoAction'], null, null, null, false, false, null]],
         '/_profiler/open' => [[['_route' => '_profiler_open_file', '_controller' => 'web_profiler.controller.profiler::openAction'], null, null, null, false, false, null]],
-        '/' => [[['_route' => 'app_catalogue_productlist', '_controller' => 'App\\Controller\\CatalogueController::productList'], null, null, null, false, false, null]],
+        '/' => [[['_route' => 'homepage', '_controller' => 'App\\Controller\\CatalogueController::productList'], null, null, null, false, false, null]],
+        '/produit/create' => [[['_route' => 'app_catalogue_createproduct', '_controller' => 'App\\Controller\\CatalogueController::createProduct'], null, null, null, false, false, null]],
     ],
     [ // $regexpList
         0 => '{^(?'
@@ -32,7 +33,10 @@ return [
                         .'|(*:159)'
                     .')'
                 .')'
-                .'|/produit/([^/]++)(*:186)'
+                .'|/produit/(?'
+                    .'|(\\d+)(*:186)'
+                    .'|edit/(\\d+)(*:204)'
+                .')'
             .')/?$}sDu',
     ],
     [ // $dynamicRoutes
@@ -43,8 +47,9 @@ return [
         136 => [[['_route' => '_profiler_exception', '_controller' => 'web_profiler.controller.exception::showAction'], ['token'], null, null, false, false, null]],
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
-        186 => [
-            [['_route' => 'app_catalogue_showproduct', '_controller' => 'App\\Controller\\CatalogueController::showProduct'], ['id'], null, null, false, true, null],
+        186 => [[['_route' => 'product', '_controller' => 'App\\Controller\\CatalogueController::showProduct'], ['id'], null, null, false, true, null]],
+        204 => [
+            [['_route' => 'app_catalogue_editproduct', '_controller' => 'App\\Controller\\CatalogueController::editProduct'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

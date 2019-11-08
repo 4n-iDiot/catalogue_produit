@@ -2,11 +2,20 @@
 
 {% block title %}{{ product.getNom() }}{% endblock %}
 {% block body %}
+        <a href="http://127.0.0.1:8000/">Revenir à la liste des produits</a>
         <h1>Produit {{ product.getId() }}</h1>
         <ul>
             <li>Prix : {{ product.getPrix() }}€<br>
                 Marque : {{ product.getMarque().getNom() }}<br>
                 Nom : {{ product.getNom() }}<br>
-                Référence : {{ product.getRéférence() }}</li>
+                Référence : {{ product.getRef() }}<br>
+                Date de mise en vente : {{ product.getDateMiseEnVente()|date("d/m/Y") }}
+            </li>
         </ul>
+        <a class="click-me" href="http://127.0.0.1:8000/produit/edit/{{ product.getId() }}">Modifier le produit</a>
+        <style>
+        .clickMe {
+            appearance: button;
+        }​
+        </style>
 {% endblock %}
