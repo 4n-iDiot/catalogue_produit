@@ -13,9 +13,5 @@
             </li>
         </ul>
         <a class="click-me" href="http://127.0.0.1:8000/produit/edit/{{ product.getId() }}">Modifier le produit</a>
-        <style>
-        .clickMe {
-            appearance: button;
-        }​
-        </style>
+        <a class="click-me" href="http://127.0.0.1:8000/produit/delete/{{ product.getId() }}">Supprimer le produit</a>
 {% endblock %}

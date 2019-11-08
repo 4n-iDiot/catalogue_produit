@@ -84,4 +84,17 @@ class CatalogueController extends AbstractController
             'productForm' => $form->createView(),
         ]);
     }
+
+    /**
+     * @Route("/produit/delete/{id}", requirements={"id"="\d+"}, name="delete_product")
+     */
+    public function deleteProduct($id)
+    {
+        $product = $this->getDoctrine()->getRepository(Produit::class)->find($id);
+        $entityManager = $this->getDoctrine()->getManager();
+        $entityManager->remove($product);
+        $entityManager->flush();
+
+        return $this->redirectToRoute('homepage');
+    }
 }

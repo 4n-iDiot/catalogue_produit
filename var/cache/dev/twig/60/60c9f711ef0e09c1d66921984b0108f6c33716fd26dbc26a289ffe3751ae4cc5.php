@@ -117,11 +117,10 @@ class __TwigTemplate_ee3bcbe838d94b9cb0ee837c3f04344de60fa2715b3a7c16bf60af837a5
         // line 15
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 15, $this->source); })()), "getId", [], "method", false, false, false, 15), "html", null, true);
         echo "\">Modifier le produit</a>
-        <style>
-        .clickMe {
-            appearance: button;
-        }​
-        </style>
+        <a class=\"click-me\" href=\"http://127.0.0.1:8000/produit/delete/";
+        // line 16
+        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 16, $this->source); })()), "getId", [], "method", false, false, false, 16), "html", null, true);
+        echo "\">Supprimer le produit</a>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -143,7 +142,7 @@ class __TwigTemplate_ee3bcbe838d94b9cb0ee837c3f04344de60fa2715b3a7c16bf60af837a5
 
     public function getDebugInfo()
     {
-        return array (  118 => 15,  112 => 12,  108 => 11,  104 => 10,  100 => 9,  96 => 8,  91 => 6,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
+        return array (  122 => 16,  118 => 15,  112 => 12,  108 => 11,  104 => 10,  100 => 9,  96 => 8,  91 => 6,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -163,11 +162,7 @@ class __TwigTemplate_ee3bcbe838d94b9cb0ee837c3f04344de60fa2715b3a7c16bf60af837a5
             </li>
         </ul>
         <a class=\"click-me\" href=\"http://127.0.0.1:8000/produit/edit/{{ product.getId() }}\">Modifier le produit</a>
-        <style>
-        .clickMe {
-            appearance: button;
-        }​
-        </style>
+        <a class=\"click-me\" href=\"http://127.0.0.1:8000/produit/delete/{{ product.getId() }}\">Supprimer le produit</a>
 {% endblock %}", "product/showProduct.html.twig", "/home/vderveaux/Documents/CatalogueProduit/catalogue_produit/templates/product/showProduct.html.twig");
     }
 }

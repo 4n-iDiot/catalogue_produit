@@ -36,6 +36,7 @@ return [
                 .'|/produit/(?'
                     .'|(\\d+)(*:186)'
                     .'|edit/(\\d+)(*:204)'
+                    .'|delete/(\\d+)(*:224)'
                 .')'
             .')/?$}sDu',
     ],
@@ -48,8 +49,9 @@ return [
         149 => [[['_route' => '_profiler_exception_css', '_controller' => 'web_profiler.controller.exception::cssAction'], ['token'], null, null, false, false, null]],
         159 => [[['_route' => '_profiler', '_controller' => 'web_profiler.controller.profiler::panelAction'], ['token'], null, null, false, true, null]],
         186 => [[['_route' => 'product', '_controller' => 'App\\Controller\\CatalogueController::showProduct'], ['id'], null, null, false, true, null]],
-        204 => [
-            [['_route' => 'app_catalogue_editproduct', '_controller' => 'App\\Controller\\CatalogueController::editProduct'], ['id'], null, null, false, true, null],
+        204 => [[['_route' => 'app_catalogue_editproduct', '_controller' => 'App\\Controller\\CatalogueController::editProduct'], ['id'], null, null, false, true, null]],
+        224 => [
+            [['_route' => 'delete_product', '_controller' => 'App\\Controller\\CatalogueController::deleteProduct'], ['id'], null, null, false, true, null],
             [null, null, null, null, false, false, 0],
         ],
     ],

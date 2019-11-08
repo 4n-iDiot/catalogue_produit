@@ -19,4 +19,5 @@ return [
     'product' => [['id'], ['_controller' => 'App\\Controller\\CatalogueController::showProduct'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/produit']], [], []],
     'app_catalogue_editproduct' => [['id'], ['_controller' => 'App\\Controller\\CatalogueController::editProduct'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/produit/edit']], [], []],
     'app_catalogue_createproduct' => [[], ['_controller' => 'App\\Controller\\CatalogueController::createProduct'], [], [['text', '/produit/create']], [], []],
+    'delete_product' => [['id'], ['_controller' => 'App\\Controller\\CatalogueController::deleteProduct'], ['id' => '\\d+'], [['variable', '/', '\\d+', 'id', true], ['text', '/produit/delete']], [], []],
 ];
