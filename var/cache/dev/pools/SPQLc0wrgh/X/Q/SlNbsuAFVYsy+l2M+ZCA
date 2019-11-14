@@ -12,6 +12,9 @@ return $getExpiry ? PHP_INT_MAX : Hydrator::hydrate(
             'path' => [
                 '/produit/edit/{id}',
             ],
+            'name' => [
+                'editProduct',
+            ],
             'requirements' => [
                 [
                     'id' => '\\d+',

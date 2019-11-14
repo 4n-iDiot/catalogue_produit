@@ -85,7 +85,7 @@ class __TwigTemplate_4d15510bcaf5a32305574f001d36498f44d343cf4b06254ec93569c4ee6
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 5
-        echo "    <h1>Nouveau produit</h1>
+        echo "    <h1>Création d'un nouveau produit</h1>
     ";
         // line 6
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["productForm"]) || array_key_exists("productForm", $context) ? $context["productForm"] : (function () { throw new RuntimeError('Variable "productForm" does not exist.', 6, $this->source); })()), 'form_start');
@@ -128,7 +128,7 @@ class __TwigTemplate_4d15510bcaf5a32305574f001d36498f44d343cf4b06254ec93569c4ee6
 
 {% block title %}Créer un produit{% endblock %}
 {% block body %}
-    <h1>Nouveau produit</h1>
+    <h1>Création d'un nouveau produit</h1>
     {{ form_start(productForm) }}
         {{ form_widget(productForm) }}
     {{ form_end(productForm) }}

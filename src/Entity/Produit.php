@@ -61,8 +61,8 @@ class Produit
 
     public function setPrix(float $prix): self
     {
-        $this->prix = $prix;
-
+        if (is_float($prix))
+            $this->prix = $prix;
         return $this;
     }
 

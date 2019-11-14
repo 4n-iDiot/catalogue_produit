@@ -85,7 +85,9 @@ class __TwigTemplate_ee3bcbe838d94b9cb0ee837c3f04344de60fa2715b3a7c16bf60af837a5
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->enter($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof = new \Twig\Profiler\Profile($this->getTemplateName(), "block", "body"));
 
         // line 5
-        echo "        <a href=\"http://127.0.0.1:8000/\">Revenir à la liste des produits</a>
+        echo "        <a href=\"";
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("listProduct");
+        echo "\">Revenir à la liste des produits</a>
         <h1>Produit ";
         // line 6
         echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 6, $this->source); })()), "getId", [], "method", false, false, false, 6), "html", null, true);
@@ -113,13 +115,13 @@ class __TwigTemplate_ee3bcbe838d94b9cb0ee837c3f04344de60fa2715b3a7c16bf60af837a5
         echo "
             </li>
         </ul>
-        <a class=\"click-me\" href=\"http://127.0.0.1:8000/produit/edit/";
+        <a class=\"click-me\" href=\"";
         // line 15
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 15, $this->source); })()), "getId", [], "method", false, false, false, 15), "html", null, true);
-        echo "\">Modifier le produit</a>
-        <a class=\"click-me\" href=\"http://127.0.0.1:8000/produit/delete/";
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("editProduct", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 15, $this->source); })()), "getId", [], "method", false, false, false, 15)]), "html", null, true);
+        echo "\">Modifier le produit</a><br>
+        <a class=\"click-me\" href=\"";
         // line 16
-        echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 16, $this->source); })()), "getId", [], "method", false, false, false, 16), "html", null, true);
+        echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("deleteProduct", ["id" => twig_get_attribute($this->env, $this->source, (isset($context["product"]) || array_key_exists("product", $context) ? $context["product"] : (function () { throw new RuntimeError('Variable "product" does not exist.', 16, $this->source); })()), "getId", [], "method", false, false, false, 16)]), "html", null, true);
         echo "\">Supprimer le produit</a>
 ";
         
@@ -142,7 +144,7 @@ class __TwigTemplate_ee3bcbe838d94b9cb0ee837c3f04344de60fa2715b3a7c16bf60af837a5
 
     public function getDebugInfo()
     {
-        return array (  122 => 16,  118 => 15,  112 => 12,  108 => 11,  104 => 10,  100 => 9,  96 => 8,  91 => 6,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
+        return array (  124 => 16,  120 => 15,  114 => 12,  110 => 11,  106 => 10,  102 => 9,  98 => 8,  93 => 6,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -151,7 +153,7 @@ class __TwigTemplate_ee3bcbe838d94b9cb0ee837c3f04344de60fa2715b3a7c16bf60af837a5
 
 {% block title %}{{ product.getNom() }}{% endblock %}
 {% block body %}
-        <a href=\"http://127.0.0.1:8000/\">Revenir à la liste des produits</a>
+        <a href=\"{{ path('listProduct') }}\">Revenir à la liste des produits</a>
         <h1>Produit {{ product.getId() }}</h1>
         <ul>
             <li>Prix : {{ product.getPrix() }}€<br>
@@ -161,8 +163,8 @@ class __TwigTemplate_ee3bcbe838d94b9cb0ee837c3f04344de60fa2715b3a7c16bf60af837a5
                 Date de mise en vente : {{ product.getDateMiseEnVente()|date(\"d/m/Y\") }}
             </li>
         </ul>
-        <a class=\"click-me\" href=\"http://127.0.0.1:8000/produit/edit/{{ product.getId() }}\">Modifier le produit</a>
-        <a class=\"click-me\" href=\"http://127.0.0.1:8000/produit/delete/{{ product.getId() }}\">Supprimer le produit</a>
+        <a class=\"click-me\" href=\"{{ path('editProduct', {id: product.getId()}) }}\">Modifier le produit</a><br>
+        <a class=\"click-me\" href=\"{{ path('deleteProduct', {id: product.getId()}) }}\">Supprimer le produit</a>
 {% endblock %}", "product/showProduct.html.twig", "/home/vderveaux/Documents/CatalogueProduit/catalogue_produit/templates/product/showProduct.html.twig");
     }
 }

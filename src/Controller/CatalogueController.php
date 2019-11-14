@@ -15,7 +15,7 @@ class CatalogueController extends AbstractController
 {
 
     /**
-     * @Route("/", name="homepage")
+     * @Route("/", name="listProduct")
      */
     public function productList()
     {
@@ -27,7 +27,7 @@ class CatalogueController extends AbstractController
     }
 
     /**
-     * @Route("/produit/{id}", name="product", requirements={"id"="\d+"})
+     * @Route("/produit/{id}", name="showProduct", requirements={"id"="\d+"})
      */
     public function showProduct($id)
     {
@@ -39,7 +39,7 @@ class CatalogueController extends AbstractController
     }
 
     /**
-     * @Route("/produit/edit/{id}", requirements={"id"="\d+"})
+     * @Route("/produit/edit/{id}", name="editProduct", requirements={"id"="\d+"})
      */
     public function editProduct($id, Request $request)
     {
@@ -53,7 +53,7 @@ class CatalogueController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            return $this->redirectToRoute('product', array('id' => $id));
+            return $this->redirectToRoute('showProduct', array('id' => $id));
         }
 
         return $this->render('product/editProduct.html.twig', [
@@ -63,7 +63,7 @@ class CatalogueController extends AbstractController
     }
 
     /**
-     * @Route("/produit/create")
+     * @Route("/produit/create", name="createProduct")
      */
     public function createProduct(Request $request)
     {
@@ -77,7 +77,7 @@ class CatalogueController extends AbstractController
             $entityManager->persist($product);
             $entityManager->flush();
 
-            return $this->redirectToRoute('homepage');
+            return $this->redirectToRoute('listProduct');
         }
 
         return $this->render('product/createProduct.html.twig', [
@@ -86,7 +86,7 @@ class CatalogueController extends AbstractController
     }
 
     /**
-     * @Route("/produit/delete/{id}", requirements={"id"="\d+"}, name="delete_product")
+     * @Route("/produit/delete/{id}", name="deleteProduct", requirements={"id"="\d+"})
      */
     public function deleteProduct($id)
     {
@@ -95,6 +95,6 @@ class CatalogueController extends AbstractController
         $entityManager->remove($product);
         $entityManager->flush();
 
-        return $this->redirectToRoute('homepage');
+        return $this->redirectToRoute('listProduct');
     }
 }

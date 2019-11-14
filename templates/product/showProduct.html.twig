@@ -2,7 +2,7 @@
 
 {% block title %}{{ product.getNom() }}{% endblock %}
 {% block body %}
-        <a href="http://127.0.0.1:8000/">Revenir à la liste des produits</a>
+        <a href="{{ path('listProduct') }}">Revenir à la liste des produits</a>
         <h1>Produit {{ product.getId() }}</h1>
         <ul>
             <li>Prix : {{ product.getPrix() }}€<br>
@@ -12,6 +12,6 @@
                 Date de mise en vente : {{ product.getDateMiseEnVente()|date("d/m/Y") }}
             </li>
         </ul>
-        <a class="click-me" href="http://127.0.0.1:8000/produit/edit/{{ product.getId() }}">Modifier le produit</a>
-        <a class="click-me" href="http://127.0.0.1:8000/produit/delete/{{ product.getId() }}">Supprimer le produit</a>
+        <a class="click-me" href="{{ path('editProduct', {id: product.getId()}) }}">Modifier le produit</a><br>
+        <a class="click-me" href="{{ path('deleteProduct', {id: product.getId()}) }}">Supprimer le produit</a>
 {% endblock %}

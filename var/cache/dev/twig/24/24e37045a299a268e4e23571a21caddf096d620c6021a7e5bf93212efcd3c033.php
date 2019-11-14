@@ -86,7 +86,10 @@ class __TwigTemplate_225324fae0b83ec12afb5cd0ee304b47186bb4bb1c5ce83715d495ee2a4
 
         // line 5
         echo "    <h1>Liste des produits</h1>
-    <a href=\"http://127.0.0.1:8000/produit/create\">Créer un nouveau produit</a>
+    <a href=\"";
+        // line 6
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("createProduct");
+        echo "\">Créer un nouveau produit</a>
     <ul>
         ";
         // line 8
@@ -94,8 +97,8 @@ class __TwigTemplate_225324fae0b83ec12afb5cd0ee304b47186bb4bb1c5ce83715d495ee2a4
         $context['_seq'] = twig_ensure_traversable((isset($context["products"]) || array_key_exists("products", $context) ? $context["products"] : (function () { throw new RuntimeError('Variable "products" does not exist.', 8, $this->source); })()));
         foreach ($context['_seq'] as $context["_key"] => $context["product"]) {
             // line 9
-            echo "            <li><a href=\"http://127.0.0.1:8000/produit/";
-            echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "getId", [], "method", false, false, false, 9), "html", null, true);
+            echo "            <li><a href=\"";
+            echo twig_escape_filter($this->env, $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("showProduct", ["id" => twig_get_attribute($this->env, $this->source, $context["product"], "getId", [], "method", false, false, false, 9)]), "html", null, true);
             echo "\"><h1>Produit ";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "getId", [], "method", false, false, false, 9), "html", null, true);
             echo " : ";
@@ -135,7 +138,7 @@ class __TwigTemplate_225324fae0b83ec12afb5cd0ee304b47186bb4bb1c5ce83715d495ee2a4
 
     public function getDebugInfo()
     {
-        return array (  116 => 14,  106 => 10,  97 => 9,  93 => 8,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
+        return array (  119 => 14,  109 => 10,  100 => 9,  96 => 8,  91 => 6,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -145,10 +148,10 @@ class __TwigTemplate_225324fae0b83ec12afb5cd0ee304b47186bb4bb1c5ce83715d495ee2a4
 {% block title %}Catalogue produit{% endblock %}
 {% block body %}
     <h1>Liste des produits</h1>
-    <a href=\"http://127.0.0.1:8000/produit/create\">Créer un nouveau produit</a>
+    <a href=\"{{ path('createProduct') }}\">Créer un nouveau produit</a>
     <ul>
         {% for product in products %}
-            <li><a href=\"http://127.0.0.1:8000/produit/{{ product.getId() }}\"><h1>Produit {{ product.getId() }} : {{ product.getNom() }}</h1></a>
+            <li><a href=\"{{ path('showProduct', {id: product.getId()}) }}\"><h1>Produit {{ product.getId() }} : {{ product.getNom() }}</h1></a>
                 <p>{{ product.getRef }}s</p>
                 <hr>
             </li>

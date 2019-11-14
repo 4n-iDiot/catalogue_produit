@@ -4,9 +4,9 @@ App\Entity\Marque:
 
 App\Entity\Produit:
   produit_{1..20}:
-    prix: <randomFloat()>
-    nom: <name()>
-    ref: <text()>
-    date_mise_en_vente: <date_create()>
+    prix: <randomFloat(2, 10, 500)>
+    nom: <word(10, true)>
+    ref: <uuid()>
+    date_mise_en_vente: <dateTimeBetween("-1000 days", "now")>
     marque: '@marque_1'
-    id: <($current)>
+    id: <current()>

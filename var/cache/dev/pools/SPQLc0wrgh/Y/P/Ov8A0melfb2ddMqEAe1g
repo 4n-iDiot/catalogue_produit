@@ -13,7 +13,7 @@ return $getExpiry ? PHP_INT_MAX : Hydrator::hydrate(
                 '/produit/delete/{id}',
             ],
             'name' => [
-                'delete_product',
+                'deleteProduct',
             ],
             'requirements' => [
                 [
