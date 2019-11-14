@@ -4,25 +4,40 @@ namespace App\Controller;
 
 use App\Entity\Marque;
 use App\Entity\Produit;
+
 use App\Form\ProduitType;
+use App\Form\SearchProductType;
 
 use Symfony\Component\Routing\Annotation\Route;
 use Symfony\Bundle\FrameworkBundle\Controller\AbstractController;
 use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\HttpFoundation\Request;
 use App\Controller\ValidatorInterface;
+
 class CatalogueController extends AbstractController
 {
 
     /**
      * @Route("/", name="listProduct")
      */
-    public function productList()
+    public function productList(Request $request)
     {
-        $products = $this->getDoctrine()->getRepository(Produit::class)->findAll();
+        $searchProduct = new Produit();
+        $productRepository = $this->getDoctrine()->getRepository('App:Produit');
+        $searchForm = $this->createForm(SearchProductType::class, $searchProduct);
+
+        if ($searchForm->isSubmitted() && $searchForm->isValid()) {
+            print("LAA");
+            $searchProduct = $searchForm->getData();
+            $products = $productRepository->search($searchProduct);
+        } else {
+            print("OU LAAA");
+            $products = $productRepository->findAllOrdered();
+        }
 
         return $this->render('product/listProduct.html.twig', [
             'products' => $products,
+            'searchForm' => $searchForm->createView(),
         ]);
     }
 

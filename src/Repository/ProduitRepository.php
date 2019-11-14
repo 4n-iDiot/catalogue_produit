@@ -19,6 +19,34 @@ class ProduitRepository extends ServiceEntityRepository
         parent::__construct($registry, Produit::class);
     }
 
+    public function findAllOrdered()
+    {
+
+        $qb = $this->createQueryBuilder('prod')->addOrderBy('prod.id', 'ASC');
+
+        $query = $qb->getQuery();
+
+        return $query->execute();
+
+        /*
+        $dql = 'SELECT prod FROM App\Entity\Produit prod';
+
+        $query = $this->getEntityManager()->createQuery($dql);
+
+        return $query->execute();
+        */
+    }
+
+    public function search(Produit $product)
+    {
+        print($product->getNom());
+        return $this->createQueryBuilder('prod')
+                    ->andWhere('prod.nom = :searchTerm')
+                    ->setParameter('searchTerm', 'sit')
+                    ->getQuery()
+                    ->execute();
+    }
+
     // /**
     //  * @return Produit[] Returns an array of Produit objects
     //  */

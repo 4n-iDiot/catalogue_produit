@@ -3,6 +3,9 @@
 {% block title %}Catalogue produit{% endblock %}
 {% block body %}
     <h1>Liste des produits</h1>
+    {{ form_start(searchForm) }}
+        {{ form_widget(searchForm) }}
+    {{ form_end(searchForm) }}
     <a href="{{ path('createProduct') }}">Créer un nouveau produit</a>
     <ul>
         {% for product in products %}
