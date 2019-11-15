@@ -98,6 +98,10 @@ class __TwigTemplate_4d15510bcaf5a32305574f001d36498f44d343cf4b06254ec93569c4ee6
         // line 8
         echo         $this->env->getRuntime('Symfony\Component\Form\FormRenderer')->renderBlock((isset($context["productForm"]) || array_key_exists("productForm", $context) ? $context["productForm"] : (function () { throw new RuntimeError('Variable "productForm" does not exist.', 8, $this->source); })()), 'form_end');
         echo "
+    <a href=\"";
+        // line 9
+        echo $this->extensions['Symfony\Bridge\Twig\Extension\RoutingExtension']->getPath("listProduct");
+        echo "\">Annuler la création du produit</a>
 ";
         
         $__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02->leave($__internal_319393461309892924ff6e74d6d6e64287df64b63545b994e100d4ab223aed02_prof);
@@ -119,7 +123,7 @@ class __TwigTemplate_4d15510bcaf5a32305574f001d36498f44d343cf4b06254ec93569c4ee6
 
     public function getDebugInfo()
     {
-        return array (  99 => 8,  95 => 7,  91 => 6,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
+        return array (  103 => 9,  99 => 8,  95 => 7,  91 => 6,  88 => 5,  78 => 4,  59 => 3,  36 => 1,);
     }
 
     public function getSourceContext()
@@ -132,6 +136,7 @@ class __TwigTemplate_4d15510bcaf5a32305574f001d36498f44d343cf4b06254ec93569c4ee6
     {{ form_start(productForm) }}
         {{ form_widget(productForm) }}
     {{ form_end(productForm) }}
+    <a href=\"{{ path('listProduct') }}\">Annuler la création du produit</a>
 {% endblock %}", "product/createProduct.html.twig", "/home/vderveaux/Documents/CatalogueProduit/catalogue_produit/templates/product/createProduct.html.twig");
     }
 }

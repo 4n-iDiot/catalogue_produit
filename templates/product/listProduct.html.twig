@@ -10,7 +10,7 @@
     <ul>
         {% for product in products %}
             <li><a href="{{ path('showProduct', {id: product.getId()}) }}"><h1>Produit {{ product.getId() }} : {{ product.getNom() }}</h1></a>
-                <p>{{ product.getRef }}s</p>
+                <p>Référence produit : {{ product.getRef }}s</p>
                 <hr>
             </li>
         {% endfor %}

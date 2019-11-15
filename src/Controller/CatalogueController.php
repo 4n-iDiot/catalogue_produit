@@ -26,12 +26,12 @@ class CatalogueController extends AbstractController
         $productRepository = $this->getDoctrine()->getRepository('App:Produit');
         $searchForm = $this->createForm(SearchProductType::class, $searchProduct);
 
+        $searchForm->handleRequest($request);
         if ($searchForm->isSubmitted() && $searchForm->isValid()) {
-            print("LAA");
             $searchProduct = $searchForm->getData();
+            print($searchProduct->getNom());
             $products = $productRepository->search($searchProduct);
         } else {
-            print("OU LAAA");
             $products = $productRepository->findAllOrdered();
         }
 

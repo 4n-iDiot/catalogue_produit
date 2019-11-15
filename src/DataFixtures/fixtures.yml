@@ -1,12 +1,15 @@
+parameters:
+  marqueArray: ["Raser", "Carglousse", "L'hamster", "Renaud", "Pomme"]
+  produitArray: ["Symphonie", "Honte", "Crack", "Pomme", "Hamster", "Règlement", "Xeu", "Kinder Délice", "Maxi Best Of", "Salade, tomate, oignon", "EU > NA", "La grosse moula", "Tacos 3 viandes", "Doliprane"]
+
 App\Entity\Marque:
   marque_{1..5}:
-    nom: <name()>
+    nom (unique): <randomElement($marqueArray)>
 
 App\Entity\Produit:
   produit_{1..20}:
     prix: <randomFloat(2, 10, 500)>
-    nom: <word(10, true)>
-    ref: <uuid()>
+    nom : <randomElement($produitArray)>
+    ref (unique): <uuid()>
     date_mise_en_vente: <dateTimeBetween("-1000 days", "now")>
-    marque: '@marque_1'
-    id: <current()>
+    marque: <randomElement([@marque_1, @marque_2, @marque_3, @marque_4, @marque_5])>

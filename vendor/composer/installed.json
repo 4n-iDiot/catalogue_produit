@@ -3266,8 +3266,8 @@
     },
     {
         "name": "symfony/form",
-        "version": "v4.3.6",
-        "version_normalized": "4.3.6.0",
+        "version": "v4.3.8",
+        "version_normalized": "4.3.8.0",
         "source": {
             "type": "git",
             "url": "https://github.com/symfony/form.git",

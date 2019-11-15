@@ -4,8 +4,12 @@ namespace App\Entity;
 
 use Doctrine\ORM\Mapping as ORM;
 
+use Symfony\Component\Validator\Constraints as Assert;
+use Symfony\Bridge\Doctrine\Validator\Constraints\UniqueEntity;
+
 /**
  * @ORM\Entity(repositoryClass="App\Repository\ProduitRepository")
+ * @UniqueEntity(fields={"ref"}, message="La référence existe déjà")
  */
 class Produit
 {
@@ -18,6 +22,9 @@ class Produit
 
     /**
      * @ORM\Column(type="float")
+     * @Assert\Positive(
+     *     message="La valeur doit être positive",
+     * )
      */
     private $prix;
 
@@ -27,12 +34,19 @@ class Produit
     private $nom;
 
     /**
-     * @ORM\Column(type="string", length=255)
+     * @ORM\Column(name="ref", type="string", length=255)
+     * @Assert\Uuid(
+     *     message="La valeur doit être un uuid valide",
+     * )
      */
     private $ref;
 
     /**
      * @ORM\Column(type="date")
+     * @Assert\LessThanOrEqual(
+     *     "now",
+     *     message="La date ne peut pas être ultérieure à aujourd'hui"
+     * )
      */
     private $date_mise_en_vente;
 

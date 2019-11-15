@@ -37,14 +37,25 @@ class ProduitRepository extends ServiceEntityRepository
         */
     }
 
-    public function search(Produit $product)
+    public function search($product)
     {
-        print($product->getNom());
-        return $this->createQueryBuilder('prod')
-                    ->andWhere('prod.nom = :searchTerm')
-                    ->setParameter('searchTerm', 'sit')
-                    ->getQuery()
-                    ->execute();
+        print($product->getPrix());
+        $qb = $this->createQueryBuilder('prod');
+
+        $query = $qb->andWhere('prod.nom LIKE :nameTerm OR prod.ref LIKE :nameTerm')
+                    ->setParameter('nameTerm', '%'.$product->getNom().'%');
+
+        if ($product->getPrix()) {
+            $qb->andWhere('prod.prix = :priceTerm')
+                ->setParameter('priceTerm', $product->getPrix());
+        }
+        if ($product->getMarque()) {
+            $qb->andWhere('mq.nom = :marqueTerm')
+                ->leftJoin('prod.marque', 'mq')
+                ->setParameter('marqueTerm', $product->getMarque()->getNom());
+        }
+
+        return $qb->getQuery()->getResult();
     }
 
     // /**

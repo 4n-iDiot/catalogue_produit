@@ -116,7 +116,7 @@ class __TwigTemplate_225324fae0b83ec12afb5cd0ee304b47186bb4bb1c5ce83715d495ee2a4
             echo " : ";
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "getNom", [], "method", false, false, false, 12), "html", null, true);
             echo "</h1></a>
-                <p>";
+                <p>Référence produit : ";
             // line 13
             echo twig_escape_filter($this->env, twig_get_attribute($this->env, $this->source, $context["product"], "getRef", [], "any", false, false, false, 13), "html", null, true);
             echo "s</p>
@@ -167,7 +167,7 @@ class __TwigTemplate_225324fae0b83ec12afb5cd0ee304b47186bb4bb1c5ce83715d495ee2a4
     <ul>
         {% for product in products %}
             <li><a href=\"{{ path('showProduct', {id: product.getId()}) }}\"><h1>Produit {{ product.getId() }} : {{ product.getNom() }}</h1></a>
-                <p>{{ product.getRef }}s</p>
+                <p>Référence produit : {{ product.getRef }}s</p>
                 <hr>
             </li>
         {% endfor %}

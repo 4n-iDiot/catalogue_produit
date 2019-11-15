@@ -23,11 +23,7 @@ class SearchProductType extends AbstractType
         $builder
             ->add('nom', TextType::class, [
                 'required' => false,
-                'label' => 'Nom du produit : ',
-            ])
-            ->add('ref', TextType::class, [
-                'required' => false,
-                'label' => 'Référence produit : '
+                'label' => 'Nom ou référence produit : ',
             ])
             ->add('marque', EntityType::class, [
                 'required' => false,
@@ -40,10 +36,12 @@ class SearchProductType extends AbstractType
                 'required' => false,
                 'label' => 'Prix : ',
             ])
+            /*
             ->add('date_mise_en_vente', DateType::class, [
                 'required' => false,
                 'label' => 'Date de mise en vente : ',
             ])
+            */
             ->add('filtrer', SubmitType::class)
         ;
     }

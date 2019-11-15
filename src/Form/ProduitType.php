@@ -38,6 +38,10 @@ class ProduitType extends AbstractType
             ])
             ->add('date_mise_en_vente', DateType::class, [
                 'label' => 'Date de mise en vente : ',
+                'placeholder' => [
+                    'year' => 'Année', 'month' => 'Mois', 'day' => 'Jour',
+                ],
+                'years' => range(1980, 2019),
             ])
             ->add('enregistrer', SubmitType::class)
         ;
